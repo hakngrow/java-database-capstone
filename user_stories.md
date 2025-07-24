@@ -84,6 +84,8 @@
 **Notes:**
 - Consider automating this reporting in the admin dashboard.
 
+---
+
 # Patient User Stories
 
 ## 1. View a List of Doctors Without Logging In
@@ -189,5 +191,91 @@
 
 **Notes:**
 - Integrate with calendar reminders if possible.
+
+---
+
+# Doctor User Stories
+
+## 1. Log into the Portal to Manage Appointments
+
+**As a doctor, I want to log into the portal, so that I can manage my appointments.**
+
+### Acceptance Criteria
+- Doctors can log in using their credentials.
+- Successful login redirects to the doctor dashboard.
+- Login failures display informative error messages.
+- Sessions are securely managed.
+
+**Priority:** High  
+**Story Points:** 2
+
+---
+
+## 2. Log Out of the Portal
+
+**As a doctor, I want to log out of the portal, so that I can protect my data.**
+
+### Acceptance Criteria
+- A visible logout option is available from all authenticated pages.
+- Logging out ends the session and redirects to the login page.
+- No sensitive data is accessible after logout.
+
+**Priority:** High  
+**Story Points:** 1
+
+---
+
+## 3. View Appointment Calendar
+
+**As a doctor, I want to view my appointment calendar, so that I can stay organized.**
+
+### Acceptance Criteria
+- Doctors can view their upcoming appointments in a calendar view.
+- Each appointment shows patient name, time, and type (in-person or online).
+- The calendar is updated in real-time as appointments are booked or canceled.
+
+**Priority:** High  
+**Story Points:** 3
+
+---
+
+## 4. Mark Unavailability
+
+**As a doctor, I want to mark my unavailability, so that patients can only book available slots.**
+
+### Acceptance Criteria
+- Doctors can select dates and times when they are unavailable.
+- Marked unavailable slots are not shown to patients for booking.
+- Doctors can update or remove their unavailability settings.
+
+**Priority:** High  
+**Story Points:** 3
+
+---
+
+## 5. Update Profile Information
+
+**As a doctor, I want to update my profile with specialization and contact information, so that patients have up-to-date information.**
+
+### Acceptance Criteria
+- Doctors can edit their profile details, including specialization and contact info.
+- Changes are reflected immediately on the patient-facing doctor list.
+- Validation ensures all required fields are completed.
+
+**Priority:** Medium  
+**Story Points:** 2
+
+---
+
+## 6. View Patient Details for Upcoming Appointments
+
+**As a doctor, I want to view the patient details for my upcoming appointments, so that I can be prepared.**
+
+### Acceptance Criteria
+- Doctors can access detailed information for each upcoming appointment, including patient name, contact info, and reason for visit.
+- Information is accessible only for confirmed appointments.
+
+**Priority:** High  
+**Story Points:** 2
 
 
