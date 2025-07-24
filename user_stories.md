@@ -1,3 +1,10 @@
+See collection of user stories for: 
+- [Admin](#admin-user-stories)
+- [Patient](#patient-user-stories)
+- [Doctor](#doctor-user-stories)
+
+---
+
 # Admin User Stories
 
 ## 1. Log into the Portal to Manage the Platform
