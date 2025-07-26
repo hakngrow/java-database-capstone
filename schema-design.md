@@ -97,21 +97,103 @@ _Doctor should not have overlapping appointments. Enforce via application logic,
 - **AUTO_INCREMENT:** For all primary keys.
 
 ---
+<br>
 
 ## MongoDB Collection Design
 
-### Collection: prescriptions
+### 1. Collection: `doctor_notes`
+
 ```json
 {
-  "_id": "ObjectId('64abc123456')",
-  "patientName": "John Smith",
-  "appointmentId": 51,
-  "medication": "Paracetamol",
-  "dosage": "500mg",
-  "doctorNotes": "Take 1 tablet every 6 hours.",
-  "refillCount": 2,
-  "pharmacy": {
-    "name": "Walgreens SF",
-    "location": "Market Street"
+  "_id": "ObjectId",
+  "patient_id": { "type": "ObjectId", "ref": "patients", "required": true },
+  "doctor_id": { "type": "ObjectId", "ref": "doctors", "required": true },
+  "appointment_id": { "type": "ObjectId", "ref": "appointments" },
+  "note": { "type": "String", "required": true }, // Free-form text
+  "created_at": { "type": "Date", "default": "Date.now" },
+  "updated_at": { "type": "Date" }
+}
+```
+<br>
+
+### 2. Collection: `patient_feedback`
+
+```json
+{
+  "patient_feedback": {
+    "_id": "ObjectId",
+    "appointment_id": { "type": "ObjectId", "ref": "appointments", "required": true },
+    "patient_id": { "type": "ObjectId", "ref": "patients", "required": true },
+    "feedback_text": { "type": "String" }, 
+    "rating": { "type": "Number", "min": 1, "max": 5 }, 
+    "created_at": { "type": "Date", "default": "Date.now" }
   }
 }
+```
+<br>
+
+### 3. Collection: `prescriptions`
+
+```json
+{
+  "_id": "ObjectId",
+  "appointment_id": { "type": "ObjectId", "ref": "appointments", "required": true },
+  "patient_id": { "type": "ObjectId", "ref": "patients", "required": true },
+  "doctor_id": { "type": "ObjectId", "ref": "doctors", "required": true },
+  "medications": [
+    {
+      "name": { "type": "String", "required": true },
+      "dosage": { "type": "String" },
+      "frequency": { "type": "String" },
+      "duration": { "type": "String" },
+      "instructions": { "type": "String" }
+    }
+  ],
+  "notes": { "type": "String" },
+  "issued_at": { "type": "Date", "default": "Date.now" }
+}
+```
+<br>
+
+### 4. Collections: `attachments`
+
+```json
+{
+  "attachments": {
+    "_id": "ObjectId",
+    "related_type": { "type": "String", "enum": ["appointment", "doctor_note", "prescription"], "required": true },
+    "related_id": { "type": "ObjectId", "required": true },
+    "uploaded_by": { "type": "ObjectId", "ref": "users", "required": true },
+    "filename": { "type": "String", "required": true },
+    "file_url": { "type": "String", "required": true },
+    "mime_type": { "type": "String" },
+    "size": { "type": "Number" },
+    "uploaded_at": { "type": "Date", "default": "Date.now" }
+  }
+}
+```
+
+### 5. Collection: `log_records`
+
+```json
+{
+  "logs": {
+    "_id": "ObjectId",
+    "event_type": { "type": "String", "enum": ["check_in", "message"], "required": true },
+    "patient_id": { "type": "ObjectId", "ref": "patients", "required": true },
+    "doctor_id": { "type": "ObjectId", "ref": "doctors" },
+    "appointment_id": { "type": "ObjectId", "ref": "appointments" },
+    "message": { "type": "String" }, // For message events
+    "timestamp": { "type": "Date", "default": "Date.now" },
+    "metadata": { "type": "Object" } // Any extra info (location, device, etc.)
+  }
+}
+```
+<br>
+
+**Notes:**
+- ObjectId types are for MongoDB references; use population as needed.
+- Attachments can reference multiple entity types via `related_type` and `related_id`.
+- All collections include timestamps for audit and tracking.
+
+
