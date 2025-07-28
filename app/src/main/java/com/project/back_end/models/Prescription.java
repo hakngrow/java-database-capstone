@@ -64,19 +64,24 @@ public class Prescription {
     @NotNull(message = "Doctor notes cannot be null")
     private String doctorNotes;
 
+    @NotNull(message = "Pharmacy name cannot be null")
+    @Size(min = 3, max = 100)
+    private String pharmacyName;
+
     // 7. Constructors:
     //    - The class includes a no-argument constructor (default constructor) and a parameterized constructor that initializes the fields: patientName, medication, dosage, doctorNotes, and appointmentId.
 
     public Prescription() {
     }
 
-    public Prescription(String id, String patientName, Long appointmentId, String medication, String dosage, String doctorNotes) {
+    public Prescription(String id, String patientName, Long appointmentId, String medication, String dosage, String doctorNotes, String pharmacyName) {
         this.id = id;
         this.patientName = patientName;
         this.appointmentId = appointmentId;
         this.medication = medication;
         this.dosage = dosage;
         this.doctorNotes = doctorNotes;
+        this.pharmacyName = pharmacyName;
     }
 
     // 8. Getters and Setters:
@@ -129,5 +134,13 @@ public class Prescription {
 
     public void setDoctorNotes(String doctorNotes) {
         this.doctorNotes = doctorNotes;
+    }
+
+    public String getPharmacyName() {
+        return pharmacyName;
+    }
+
+    public void setPharmacyName(String pharmacyName) {
+        this.pharmacyName = pharmacyName;
     }
 }

@@ -6,10 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+
+import java.time.LocalDate;
 
 @Entity
 public class Patient {
@@ -76,6 +75,16 @@ public class Patient {
     @Size(max = 255)
     private String address;
 
+    @NotNull(message = "Date of birth cannot be null")
+    @Past(message = "Date of birth must be in the past")
+    private LocalDate dateOfBirth;
+
+    @Pattern(regexp = "\\d{10}", message = "Emergency contact must be 10 digits")
+    private String emergencyContact;
+
+    @Size(min=3, max = 100)
+    private String insuranceProvider;
+
     // 7. Getters and Setters:
     //    - Standard getter and setter methods are provided for all fields: id, name, email, password, phone, and address.
     //    - These methods allow access and modification of the fields of the Patient class.
@@ -129,15 +138,43 @@ public class Patient {
         this.address = address;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getEmergencyContact() {
+        return emergencyContact;
+    }
+
+    public void setEmergencyContact(String emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public String getInsuranceProvider() {
+        return insuranceProvider;
+    }
+
+    public void setInsuranceProvider(String insuranceProvider) {
+        this.insuranceProvider = insuranceProvider;
+    }
+
     public Patient() {
     }
 
-    public Patient(Long id, String name, String email, String password, String phone, String address) {
+    public Patient(Long id, String name, String email, String password, String phone, String address,
+                   LocalDate dateOfBirth, String emergencyContact, String insuranceProvider) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.emergencyContact = emergencyContact;
+        this.insuranceProvider = insuranceProvider;
     }
 }

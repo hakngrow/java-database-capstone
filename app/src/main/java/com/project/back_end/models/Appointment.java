@@ -3,6 +3,7 @@ package com.project.back_end.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -61,6 +62,9 @@ public class Appointment {
     //      - The @NotNull annotation ensures that the status field is not null.
     private int status; // 0 = Scheduled, 1 = Completed
 
+    @Size(min = 3, max = 255)
+    private String reasonForVisit;
+
     // 6. 'getEndTime' method:
     //    - Type: private LocalDateTime
     //    - Description:
@@ -71,7 +75,6 @@ public class Appointment {
     public LocalDateTime getEndTime() {
         return appointmentTime.plusHours(1);
     }
-
 
     // 7. 'getAppointmentDate' method:
     //    - Type: private LocalDate
@@ -99,12 +102,13 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime appointmentTime, int status) {
+    public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime appointmentTime, int status, String reasonForVisit) {
         this.id = id;
         this.doctor = doctor;
         this.patient = patient;
         this.appointmentTime = appointmentTime;
         this.status = status;
+        this.reasonForVisit = reasonForVisit;
     }
 
     // 10. Getters and Setters:
@@ -148,6 +152,14 @@ public class Appointment {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getReasonForVisit() {
+        return reasonForVisit;
+    }
+
+    public void setReasonForVisit(String reasonForVisit) {
+        this.reasonForVisit = reasonForVisit;
     }
 }
 

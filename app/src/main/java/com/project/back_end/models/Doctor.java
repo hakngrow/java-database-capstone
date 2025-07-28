@@ -82,6 +82,18 @@ public class Doctor {
     @ElementCollection
     private List<String> availableTimes;
 
+    @NotNull
+    @Size(min = 1, max = 100)
+    private int yearsOfExperience;
+
+    @NotNull(message = "Clinic address cannot be null")
+    @Size(max = 255)
+    private String clinicAddress;
+
+    @NotNull
+    @Size(min = 1, max = 5)
+    private int rating;
+
     // 8. Getters and Setters:
     //    - Standard getter and setter methods are provided for all fields: id, name, specialty, email, password, phone, and availableTimes.
 
@@ -141,10 +153,35 @@ public class Doctor {
         this.availableTimes = availableTimes;
     }
 
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public String getClinicAddress() {
+        return clinicAddress;
+    }
+
+    public void setClinicAddress(String clinicAddress) {
+        this.clinicAddress = clinicAddress;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     public Doctor() {
     }
 
-    public Doctor(Long id, String name, String specialty, String email, String password, String phone, List<String> availableTimes) {
+    public Doctor(Long id, String name, String specialty, String email, String password, String phone,
+                  List<String> availableTimes, int yearsOfExperience, String clinicAddress, int rating) {
         this.id = id;
         this.name = name;
         this.specialty = specialty;
@@ -152,6 +189,9 @@ public class Doctor {
         this.password = password;
         this.phone = phone;
         this.availableTimes = availableTimes;
+        this.yearsOfExperience = yearsOfExperience;
+        this.clinicAddress = clinicAddress;
+        this.rating = rating;
     }
 }
 
