@@ -64,7 +64,7 @@ public class Prescription {
     @NotNull(message = "Doctor notes cannot be null")
     private String doctorNotes;
 
-    @NotNull(message = "Pharmacy name cannot be null")
+    //@NotNull(message = "Pharmacy name cannot be null")
     @Size(min = 3, max = 100)
     private String pharmacyName;
 

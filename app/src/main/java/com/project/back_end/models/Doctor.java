@@ -82,17 +82,17 @@ public class Doctor {
     @ElementCollection
     private List<String> availableTimes;
 
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 100)
-    private int yearsOfExperience;
+    private Integer yearsOfExperience;
 
-    @NotNull(message = "Clinic address cannot be null")
+    //@NotNull(message = "Clinic address cannot be null")
     @Size(max = 255)
     private String clinicAddress;
 
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 5)
-    private int rating;
+    private Integer rating = 0;
 
     // 8. Getters and Setters:
     //    - Standard getter and setter methods are provided for all fields: id, name, specialty, email, password, phone, and availableTimes.
@@ -153,7 +153,7 @@ public class Doctor {
         this.availableTimes = availableTimes;
     }
 
-    public int getYearsOfExperience() {
+    public Integer getYearsOfExperience() {
         return yearsOfExperience;
     }
 
@@ -169,7 +169,7 @@ public class Doctor {
         this.clinicAddress = clinicAddress;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
@@ -194,4 +194,3 @@ public class Doctor {
         this.rating = rating;
     }
 }
-

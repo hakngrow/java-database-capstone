@@ -71,11 +71,11 @@ public class Patient {
     //      - Represents the patient's address.
     //      - The @NotNull annotation ensures that the address must be provided.
     //      - The @Size(max = 255) annotation ensures that the address does not exceed 255 characters in length, providing validation for the address input.
-    @NotNull(message = "Address cannot be null")
+    //@NotNull(message = "Address cannot be null")
     @Size(max = 255)
     private String address;
 
-    @NotNull(message = "Date of birth cannot be null")
+    //@NotNull(message = "Date of birth cannot be null")
     @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
 
