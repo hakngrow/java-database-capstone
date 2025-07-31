@@ -1,5 +1,19 @@
 /* this is the style sheet file for index.htlm  */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Full height layout and Roboto font */
+  html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+  }
+
+
+  
 /* 
 **Global Reset (`*`)**
 
