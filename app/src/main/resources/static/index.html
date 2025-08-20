@@ -129,8 +129,8 @@ and triggers modal-based login functionality.
                     </main>
                     <!-- Hidden Modal -->
                     <div id="modal" class="modal">
-                        <button id="closeModal">Close</button>
-                        <div id="modal-body">
+                        <button id="closeModal" class="button-close">Close</button>
+                        <div id="modal-body" class="modal-content"">
                             <!-- Dynamic content will be inserted here -->
                         </div>
                     </div>
@@ -146,6 +146,15 @@ and triggers modal-based login functionality.
                 // Optional: navigate or update UI
                 // window.location.href = `/${role}/dashboard`;
             }
+
+            const modal = document.getElementById("modal");
+            const closeBtn = document.getElementById("closeModal");
+
+            //btn.onclick = () => modal.style.display = "flex";
+            closeBtn.onclick = () => modal.style.display = "none";
+            window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
+
+
           </script>
           <script type="module" src="../js/services/index.js" defer></script>
     </body>
