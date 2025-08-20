@@ -4,16 +4,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Full height layout and Roboto font */
-  html, body {
+}
+
+/* Full height layout and Roboto font */
+html, body {
     height: 100%;
     font-family: 'Roboto', sans-serif;
-  }
+}
 
-
+.wrapper {
+    display: flex;
+    flex-direction: column;   /* stack items vertically */
+    min-height: 100vh;        /* full viewport height */
+}
   
+.wrapper main {
+    flex: 1;                  /* grow to fill remaining space */
+}
+
+h2 {
+    font-size: 2rem;            /* large text */
+    font-weight: bold;          /* bold */
+    color: #2c3e50;             /* specific color (dark blue-gray) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 1rem;        /* spacing below */
+    text-align: center;         /* optional centering */
+}
+  
+.button-container {
+    display: flex;
+    justify-content: center;    /* center buttons horizontally */
+    gap: 1rem;                  /* spacing between buttons */
+}
+  
+button {
+    background-color: #3498db;  /* primary blue */
+    color: #fff;                /* white text */
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;         /* rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+button:hover {
+    background-color: #2980b9;  /* darker blue on hover */
+}
+  
+
+
 /* 
 **Global Reset (`*`)**
 
